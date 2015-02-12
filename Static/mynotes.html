@@ -8,13 +8,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Jumbotron Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="jumbotron.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -27,6 +27,7 @@
     <![endif]-->
   </head>
 
+  <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -53,39 +54,50 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="./Class_Pages/Anthropology.html">Anthropology</a></li>
-    
-
-          </ul>
-
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Classes</h1>
-
-          <div class="row placeholders">
-
-          </div>
-
-          <h2 class="sub-header">Click on a subject on the sidebar and search for your course title</h2>
-  
-       
-            </table>
-          </div>
-        </div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>My Notes</h1>
+        <p>View your class notes or your upload own notes to the class page</p>
+        <p><a class="btn btn-primary btn-lg" href="UploadNotes.html" role="button">Upload Notes</a></p>
       </div>
     </div>
+
+    <div class="container">
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-3">
+          <h2>ATP 100</h2>
+          <h4>Biological Anthropology</h4>
+          <p><a class="btn btn-default" href="./class_Pages/ATP100.html" role="button">View notes</a></p>
+        </div>
+
+
+      <div class="col-md-3">
+          <h2>CSE 101</h2>
+          <h4>Data Structures and Algorithms</h4>
+          <p><a class="btn btn-default" href="./class_Pages/ExampleClassPage.html" role="button">View notes</a></p>
+        </div>
+
+      <div class="col-md-3">
+          <h2>Econ 120A</h2>
+          <h4>Introduction to Probability and Statistics</h4>
+          <p><a class="btn btn-default" href="./class_Pages/ExampleClassPage.html" role="button">View notes</a></p>
+        </div>
+
+
+      <hr>
+
+
+    </div> <!-- /container -->
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
