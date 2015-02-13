@@ -15,5 +15,59 @@
 			"course": "ECON 120A",
 			"name": "Introduction to Probability and Statistics"
 		}
-	]
+	],
+
+	"notes": {
+		"atp100": {
+			"name": "Biological Anthropology",
+			"documents": [
+				{
+					"name": "Primate Behavior Notes",
+					"uploader": "Jake Smith",
+					"id": "primate_behavior_notes",
+					"score": 0
+				},
+				{
+					"name": "Morphology Notes",
+					"uploader": "Lyla Garrity",
+					"id": "morphology_notes",
+					"score": 0
+				},
+				{
+					"name": "Genetics Notes",
+					"uploader": "Tim Riggins",
+					"id": "genetics_notes",
+					"score": 0
+				}
+			]
+		},
+		"cse101": {
+			"name": "Data Structures and Algorithms",
+			"documents": [
+				{
+					"name": "Dynamic Programming",
+					"uploader": "Russell Smith",
+					"id": "dynamic_programming",
+					"score": 0
+				},
+				{
+					"name": "Divide and Conquer",
+					"uploader": "John Amaro",
+					"id": "divide_and_conquer",
+					"score": 0
+				}
+			]
+		},
+		"econ120a": {
+			"name": "Introduction to Probability and Statistics",
+			"documents": [
+				{
+					"name": "Money and Credit",
+					"uploader": "Irine Smith",
+					"id": "money_and_credit",
+					"score": 0
+				}
+			]
+		}
+	}
 }

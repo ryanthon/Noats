@@ -58,30 +58,24 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
-            <h1>Biologoical Anthropology</h1>
+            <h1>{{name}}</h1>
             <p>Click to view notes or upload notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             <a class="btn btn-md btn-primary" href="class_added.html" role="button">Add Class</a>
             <a class="btn btn-md btn-primary" href="../UploadNotes.html" role="button">Upload Notes</a>
             </p>
            
           </div>
-          <div class="row">
-            <div class="col-xs-6 col-lg-4">
-              <h2>Primate Behavior Notes</h2>
-              <p>By Jake Smith</p>
-              <p><a class="btn btn-default" href="../Notes_Example.html" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Morphology Notes</h2>
-              <p>By Lyla Garrity</p>
-              <p><a class="btn btn-default" href="../Notes_Example.html" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
-            <div class="col-xs-6 col-lg-4">
-              <h2>Genetics Notes</h2>
-              <p>By Tim Riggins</p>
-              <p><a class="btn btn-default" href="../Notes_Example.html" role="button">View details &raquo;</a></p>
-            </div><!--/.col-xs-6.col-lg-4-->
 
+
+          <div class="row">
+            {{#each notes}}
+            <div class="col-xs-6 col-lg-4">
+              <h2>{{name}}</h2>
+              <p>By {{uploader}}</p>
+              <p><a class="btn btn-default" href="../Notes_Example.html" role="button">View details &raquo;</a>
+              </p>
+            </div>
+          {{/each}}
           </div><!--/row-->
         </div><!--/.col-xs-12.col-sm-9-->
 
