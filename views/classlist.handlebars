@@ -18,7 +18,7 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="../public/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,25 +50,36 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="./Class_Pages/Anthropology.html">Anthropology</a></li>
-    
-
-          </ul>
-
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Classes</h1>
+        
+        <div class="col-sm-5 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+          <h1 class="page-header">Subjects</h1>
 
           <div class="row placeholders">
 
           </div>
 
-          <h2 class="sub-header">Click on a subject on the sidebar and search for your course title</h2>
+          <h2 class="sub-header">Subject List</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Subject Code</th>
+                  <th>Subject Title</th>
+                  <th>View Classes</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ATP</td>
+                  <td>Anthropology</td>
+                  <td><a class="btn btn-xs btn-primary" href="/anthropology" role="button">View</a></td>
   
-       
+
+                </tr>
+   
+
+              </tbody>
             </table>
           </div>
         </div>
@@ -79,9 +90,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="../public/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../public/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

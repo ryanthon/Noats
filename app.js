@@ -15,6 +15,7 @@ var mynotes = require('./routes/mynotes');
 var uploadNotes = require('./routes/upload_notes');
 var classes = require('./routes/classes');
 
+
 var app = express();
 
 // all environments
@@ -47,6 +48,7 @@ app.get('/mynotes', mynotes.view);
 app.get('/upload', uploadNotes.view);
 app.post('/upload/notes', uploadNotes.upload);
 app.get('/classes/:class_id', classes.view);
+
 // Example route
 // app.get('/users', user.list);
 
