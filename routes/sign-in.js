@@ -1,4 +1,4 @@
-var loggedIn = false;
+var loggedIn = true;
 
 var loggedInItems = [
 	{
@@ -6,7 +6,7 @@ var loggedInItems = [
 		"title": "My Notes"
 	},
 	{
-		"link": "classlist",
+		"link": "classes/subjects",
 		"title": "Classes"
 	},
 	{

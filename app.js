@@ -10,7 +10,7 @@ var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
 var signIn = require('./routes/sign-in');
-var classlist = require('./routes/classlist');
+var subjects = require('./routes/subjects');
 var mynotes = require('./routes/mynotes');
 var uploadNotes = require('./routes/upload_notes');
 var classes = require('./routes/classes');
@@ -41,12 +41,13 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/sign-in', signIn.view);
 app.post('/sign-in/login', signIn.login);
-app.get('/classlist', classlist.view);
 app.get('/sign-in/logout', signIn.logout);
 app.get('/mynotes', mynotes.view);
 app.get('/upload', uploadNotes.view);
 app.post('/upload/notes', uploadNotes.upload);
-app.get('/classes', classes.view);
+app.get('/classes', classes.singleClassView);
+app.get('/classes/subjects', classes.viewSubjects);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

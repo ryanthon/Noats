@@ -1,4 +1,82 @@
 {
+	"subjects": [
+		{
+			"code": "ATP",
+			"subject": "Anthropology"
+		},
+		{
+			"code": "CSE",
+			"subject": "Computer Science"
+		},
+		{
+			"code": "ECE",
+			"subject": "Electrical Engineering"
+		},
+		{
+			"code": "ECON",
+			"subject": "Economics"
+		}
+	],
+	"available_classes": {
+		"Anthropology": [
+			{
+				"title": "Biological Anthropology",
+				"section": "100",
+				"subject": "ATP"
+			},
+			{
+				"title": "Cultural Anthropology",
+				"section": "110",
+				"subject": "ATP"
+			}
+		],
+		"Computer Science": [
+			{
+				"title": "Advanced Data Structures",
+				"section": "100",
+				"subject": "CSE"
+			},
+			{
+				"title": "Data Structures and Algorithms",
+				"section": "101",
+				"subject": "CSE"
+			},
+			{
+				"title": "Software Engineering",
+				"section": "110",
+				"subject": "CSE"
+			},
+			{
+				"title": "Human Computer Interaction",
+				"section": "170",
+				"subject": "CSE"
+			},
+			{
+				"title": "Mobile Programming",
+				"section": "190",
+				"subject": "CSE"
+			}
+		],
+		"Electrical Engineering": [
+			{
+				"title": "Introduction to Analog Design",
+				"section": "35",
+				"subject": "ECE"
+			},
+			{
+				"title": "Circuits and Systems",
+				"section": "45",
+				"subject": "ECE"
+			}
+		],
+		"Economics": [
+			{
+				"title": "Introduction to Probability and Statistics",
+				"section": "120A",
+				"subject": "ECON"
+			}
+		]
+	},
 	"classes": [
 		{
 			"id": "atp100",
