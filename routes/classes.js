@@ -16,7 +16,6 @@ exports.singleClassView = function(req, res) {
 
 exports.viewSubjects = function(req, res) {
 	var query = req.query;
-	console.log( query );
 
 	if( query.subject == null ){
 		var data = signIn.getData();
@@ -29,6 +28,7 @@ exports.viewSubjects = function(req, res) {
 		var subject = query.subject;
 		var classes = jsonData["available_classes"][subject];
 		data["classes"] = classes;
+		data["subject"] = subject;
 		res.render( "classes", data );
 	}
 }

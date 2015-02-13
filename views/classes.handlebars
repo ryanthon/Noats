@@ -42,11 +42,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="sign-in.html">Login</a></li>
-            <li class="active"><a href="classlist.html">Search</a></li>
-
+            {{#each navItems}}
+              <li><a href="/{{link}}">{{title}}</a></li>
+            {{/each}}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,11 +55,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Classes</h1>
 
-          <div class="row placeholders">
-
-          </div>
-
-          <h2 class="sub-header">Anthropology</h2>
+          <h2 class="sub-header">{{subject}}</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -69,24 +63,18 @@
                   <th>Section ID</th>
                   <th>Subject</th>
                   <th>Course Title</th>
-                  <th>View Class Notes<th>
+                  <th>View Notes<th>
                 </tr>
               </thead>
               <tbody>
+                {{#each classes}}
                 <tr>
-                  <td>100</td>
-                  <td>ATP</td>
-                  <td>Biological Anthropology</td>
-                  <td><a class="btn btn-xs btn-primary" href="ExampleClassPage.html" role="button">View</a></td>
-
-                </tr>
-                <tr>
-                  <td>110</td>
-                  <td>ATP</td>
-                  <td>Cultural Anthropology</td>
+                  <td>{{section}}</td>
+                  <td>{{subject}}</td>
+                  <td>{{title}}</td>
                   <td><a class="btn btn-xs btn-primary" href="ExampleClassPage.html" role="button">View</a></td>
                 </tr>
-
+                {{/each}}
               </tbody>
             </table>
           </div>
@@ -98,9 +86,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

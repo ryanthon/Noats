@@ -15,6 +15,7 @@ var mynotes = require('./routes/mynotes');
 var uploadNotes = require('./routes/upload_notes');
 var classes = require('./routes/classes');
 
+
 var app = express();
 
 // all environments
@@ -47,7 +48,6 @@ app.get('/upload', uploadNotes.view);
 app.post('/upload/notes', uploadNotes.upload);
 app.get('/classes', classes.singleClassView);
 app.get('/classes/subjects', classes.viewSubjects);
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
