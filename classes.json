@@ -1,0 +1,19 @@
+{
+	"classes": [
+		{
+			"id": "atp100",
+			"course": "ATP 100",
+			"name": "Biological Anthropology"
+		},
+		{
+			"id": "cse101",
+			"course": "CSE 101",
+			"name": "Data Structures and Algorithms"
+		},
+		{
+			"id": "econ120a",
+			"course": "ECON 120A",
+			"name": "Introduction to Probability and Statistics"
+		}
+	]
+}
