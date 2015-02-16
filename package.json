@@ -2,22 +2,21 @@
   "name": "IntroHCI",
   "version": "0.0.1",
   "author": "Intro HCI Staff",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/IntroHCI/lab5"
   },
   "license": "MIT",
-
   "private": true,
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "3.x",
-    "express3-handlebars": "*"
+    "body-parser": "^1.12.0",
+    "express": "^4.11.2",
+    "express-handlebars": "^1.1.0"
   },
   "engines": {
     "node": "0.10.x"
-  }  
+  }
 }
