@@ -1,4 +1,4 @@
-var signIn = require("./sign-in");
+var signIn = require("./auth");
 
 exports.view = function(req, res) {
 	res.render('upload_notes', signIn.getData());

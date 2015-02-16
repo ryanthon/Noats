@@ -1,21 +1,24 @@
+var express = require( 'express' );
+var auth = express.Router();
+
 var loggedIn = true;
 
 var loggedInItems = [
 	{
-		"link": "mynotes",
+		"link": "/mynotes",
 		"title": "My Notes"
 	},
 	{
-		"link": "classes/subjects",
+		"link": "/classes/subjects",
 		"title": "Classes"
 	},
 	{
-		"link": "sign-in/logout",
+		"link": "/auth/logout",
 		"title": "Logout"
 	}
 ]
 
-exports.isLoggedIn = function() {
+auth.isLoggedIn = function() {
 	return loggedIn;
 }
 
@@ -34,21 +37,23 @@ function setupData() {
 	}
 }
 
-exports.getData = function() {
+auth.getData = function() {
 	setupData();
 	return data;
 }
 
-exports.view = function(req, res) {
-	res.render('sign-in', exports.getData());
-};
+auth.get( '/', function( req, res ) {
+	res.render('sign-in', auth.getData());
+});
 
-exports.login = function(req, res) {
+auth.post( '/login', function( req, res ) {
 	loggedIn = true;
 	res.redirect("/mynotes");
-}
+});
 
-exports.logout = function(req, res) {
+auth.get( '/logout', function( req, res ) {
 	loggedIn = false;
 	res.redirect("/");
-}
+});
+
+module.exports = auth;

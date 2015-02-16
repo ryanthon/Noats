@@ -8,23 +8,14 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>My Notes</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/jumbotron.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../public/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
   </head>
 
   <body>
@@ -46,29 +37,25 @@
             {{/each}}
             </li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
         <h1>My Notes</h1>
         <p>View your class notes or your upload own notes to the class page</p>
-        <p><a class="btn btn-primary btn-lg" href="/upload" role="button">Upload Notes</a></p>
+        <a class="btn btn-primary btn-lg" href="/upload" role="button">Upload Notes</a>
       </div>
     </div>
 
     <div class="container">
-
-      <!-- Example row of columns -->
       <div class="row">
-
       {{#each classes}}
         <div class="col-md-3">
           <h2>{{course}}</h2>
           <h4>{{name}}</h4>
-          <p><a class="btn btn-default" href="classes?class_id={{id}}" role="button">View notes</a></p>
+          <p><a class="btn btn-default" href="/classes/{{id}}" role="button">View notes</a></p>
         </div>
       {{/each}}
       <hr>
@@ -81,8 +68,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../public/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../public/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

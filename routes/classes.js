@@ -1,34 +1,22 @@
-var signIn = require("./sign-in");
+var express = require( 'express' );
+var classes = express.Router();
+var subjects = require( './subjects' );
+
+var auth = require("./auth");
 var jsonData = require("../classes.json");
 
+classes.use( '/subjects', subjects );
 
-exports.singleClassView = function(req, res) {
-	var query = req.query;
+classes.get( '/:classID', function(req, res) {
+	var classID = req.params.classID;
 
-	if( query.class_id != null ) {
-		var data = signIn.getData();
-		var classID = query.class_id;
+	if( classID != null ) {
+		var data = auth.getData();
 		data["notes"] = jsonData["notes"][classID]["documents"];
 		data["name"] = jsonData["notes"][classID]["name"];
+		data["isAdded"] = true;
 		res.render( "class", data );
 	}
-}
+});
 
-exports.viewSubjects = function(req, res) {
-	var query = req.query;
-
-	if( query.subject == null ){
-		var data = signIn.getData();
-		var subjects = jsonData["subjects"];
-		data["subjects"] = subjects;
-		res.render( "subjects", data );
-	}
-	else {
-		var data = signIn.getData();
-		var subject = query.subject;
-		var classes = jsonData["available_classes"][subject];
-		data["classes"] = classes;
-		data["subject"] = subject;
-		res.render( "classes", data );
-	}
-}
+module.exports = classes;
