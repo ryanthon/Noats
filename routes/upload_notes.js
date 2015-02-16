@@ -7,3 +7,13 @@ exports.view = function(req, res) {
 exports.upload = function(req,res) {
 	res.redirect('/mynotes');
 }
+
+$(function(){
+  
+  $(".dropdown-menu li a").click(function(){
+    
+    $(".btn:first-child").text($(this).text());
+     $(".btn:first-child").val($(this).text());
+  });
+
+});
