@@ -29,9 +29,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            {{#each navItems}}
-              <li><a href="{{link}}">{{title}}</a></li>
-            {{/each}}
+            <li><a href="/home">My Notes</a></li>
+            <li><a href="/classes/subjects">Classes</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -55,7 +55,7 @@
                 {{#each classes}}
                 <tr>
                   <td>{{section}}</td>
-                  <td>{{subject}}</td>
+                  <td>{{code}}</td>
                   <td>{{title}}</td>
                   <td><a class="btn btn-xs btn-primary" href="/classes/{{id}}" role="button">View</a></td>
                 </tr>

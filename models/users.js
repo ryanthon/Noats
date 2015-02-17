@@ -1,9 +1,15 @@
 var mongoose = require( 'mongoose' );
+var Schema = mongoose.Schema;
 
-var users = new Schema({
+var users = Schema({
 	"firstName" : String,
 	"lastName"  : String,
-	"email"     : String
+	"email"     : String,
+	"password"  : String,
+	"classes"   : [{
+		type  : Schema.ObjectId,
+		ref   : "classes"
+	}]
 });
 
-exports.User = mongoose.model( 'users', users );
+module.exports = mongoose.model( 'users', users );

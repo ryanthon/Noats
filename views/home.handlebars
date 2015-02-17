@@ -10,12 +10,9 @@
 
     <title>My Notes</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
-
-    <script src="js/ie-emulation-modes-warning.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/jumbotron.css" rel="stylesheet">
+    <script src="/js/ie-emulation-modes-warning.js"></script>
   </head>
 
   <body>
@@ -32,10 +29,9 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            {{#each navItems}}
-              <li><a href="{{link}}">{{title}}</a></li>
-            {{/each}}
-            </li>
+            <li><a href="/home">My Notes</a></li>
+            <li><a href="/classes/subjects">Classes</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -53,9 +49,9 @@
       <div class="row">
       {{#each classes}}
         <div class="col-md-3">
-          <h2>{{course}}</h2>
-          <h4>{{name}}</h4>
-          <p><a class="btn btn-default" href="/classes/{{id}}" role="button">View notes</a></p>
+          <h2>{{code}} {{section}}</h2>
+          <h4>{{title}}</h4>
+          <p><a class="btn btn-default" href="/classes/{{_id}}" role="button">View notes</a></p>
         </div>
       {{/each}}
       <hr>

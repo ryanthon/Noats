@@ -1,22 +1,26 @@
 var express = require( 'express' );
 var subjects = express.Router();
 
-var auth = require("./auth");
-var jsonData = require("../classes.json");
+var Subject = require( '../models/subjects' );
+var Classes = require( '../models/classes' );
 
 subjects.get( '/', function( req, res ) {
-	var data = auth.getData();
-	var subjects = jsonData["subjects"];
-	data["subjects"] = subjects;
-	res.render( "subjects", data );
+	Subject.find( {}, function( err, subjs ) {
+		var data = {
+			'subjects' : subjs
+		}
+		res.render( 'subjects', data );
+	});
 });
 
-subjects.get( '/:subjectID', function( req, res ) {
-	var data = auth.getData();
-	var subject = req.params.subjectID;
-	var classes = jsonData["available_classes"][subject];
-	data["classes"] = classes;
-	res.render( "classes", data );
+subjects.get( '/:subjectCode', function( req, res ) {
+	Classes.find( { 'code' : req.params.subjectCode}, function( err, classes ) {
+		var data = {
+			'classes' : classes
+		}
+		console.log( data );
+		res.render( "classes", data );
+	});
 });
 
 module.exports = subjects;

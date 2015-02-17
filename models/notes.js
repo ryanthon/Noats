@@ -1,17 +1,15 @@
 var mongoose = require( 'mongoose' );
+var Schema = mongoose.Schema;
 
 var notes = new Schema({
 	"title"    : String,
 	"uploader" : {
-		type: Schema.ObjectId
+		type: Schema.ObjectId,
 		ref: "users"
 	},
 	"score"  : Number,
 	"url"    : String,
-	"topic"  : {
-		type : Schema.ObjectId,
-		ref  : "topics"
-	}
+	"topic"  : String
 });
 
-exports.Note = mongoose.model( 'notes', notes );
+module.exports = mongoose.model( 'notes', notes );

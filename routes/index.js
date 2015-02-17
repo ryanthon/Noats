@@ -1,24 +1,43 @@
 var express = require( 'express' );
-var index = express.Router();
+var router  = express.Router();
 
-var signIn = require("./auth");
-
-index.get( '/', function( req, res ) {
-	if( signIn.isLoggedIn() == true ) {
-		res.redirect("/mynotes");
+var isAuthenticated = function( req, res, next ) {
+	// if user is authenticated in the session, call the next() to call the next request handler 
+	// Passport adds this method to request object. A middleware is allowed to add properties to
+	// request and response objects
+	if( req.isAuthenticated() ) {
+		return next();
 	}
-	else {
-		res.render('index');
-	}
-});
 
-// exports.view = function(req, res) {
-// 	if( signIn.isLoggedIn() == true ) {
-// 		res.redirect("/mynotes");
-// 	}
-// 	else {
-// 		res.render('index');
-// 	}
-// };
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect( '/' );
+}
 
-module.exports = index;
+module.exports = function( passport ) {
+	router.get( '/', function( req, res ) {
+		if( req.isAuthenticated() ) {
+			console.log( 'user logged in already' );
+			res.redirect( '/home' );
+		}
+		else {
+			res.render( 'sign-in' );
+		}
+	});
+
+	router.post( '/login', passport.authenticate( 'login', {
+		successRedirect : '/home',
+		failureRedirect : '/'
+	}));
+
+	router.post( '/register', passport.authenticate( 'register', {
+		successRedirect: '/home',
+		failureRedirect: '/'
+	}));
+
+	router.get( '/logout', function( req, res ) {
+		req.logout();
+		res.redirect( '/' );
+	});
+
+	return router;
+}
