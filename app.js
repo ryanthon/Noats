@@ -8,8 +8,6 @@ var mongoose    = require( 'mongoose' );
 var passport    = require( 'passport' );
 var session     = require( 'express-session' );
 
-// require routes
-//var index       = require( './routes/index' );
 var app = express();
 
 // configure app environment
