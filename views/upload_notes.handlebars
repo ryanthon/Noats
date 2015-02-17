@@ -26,12 +26,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Noats</a>
+          <a class="navbar-brand" href="/">Noats Home</a>
+          <a class="navbar-brand" href="/classes/subjects">Classes</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/home">My Notes</a></li>
-            <li><a href="/classes/subjects">Classes</a></li>
             <li><a href="/logout">Logout</a></li>
           </ul>
         </div>
@@ -40,39 +39,43 @@
 
     <div class="container">
 
-    <div>
-        <h2>Upload Notes</h2>
+      <div>
+          <h1>Upload Notes</h1>
       </div>
 
-<div class="btn-group-vertical" role="group" aria-label="...">
-  <h3> Class </h3>
-  <button type="button" class="btn btn-default">ATP 100</button>
-  <button type="button" class="btn btn-default">CSE 101</button>
-  <button type="button" class="btn btn-default">ECON 120A</button>
-</div>
+      <div class="btn-group-vertical" role="group" aria-label="...">
+        <h3>Class</h3>
+        {{#each classes}}
+          <button type="button" class="btn btn-default class-btn" id="{{id}}" style="outline: 0">{{code}} {{section}}</button>
+        {{/each}}
+      </div>
 
- <div>
- <h3> Insert Text or Upload File </h3>
-    <div class="input-group">
+      <br>
+      <br>
 
-  <form role="form">
-    <div class="form-group">
-      <label for="comment">Copy/Paste Notes:</label>
-      <textarea class="form-control" rows="6" id="comment"></textarea>
-    </div>
-    <a class="btn btn-primary btn-md" href="#" role="button">Upload Input Text</a>
-  </form>
-    </div><!-- /input-group -->
-    <br>
-    <a class="btn btn-primary btn-md" href="#" role="button">Upload Existing File</a>
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
+      <div>
+        <h3>Submit Text or File</h3>
+        <div class="input-group">
 
+          <form role="form">
+            <div class="form-group">
+              <label for="comment">Type/Copy Notes:</label>
+              <textarea class="form-control" rows="6" id="note-text"></textarea>
+            </div>
+            <a class="btn btn-primary btn-md" role="button" id="submit-text">Submit Text</a>
+          </form>
+        </div>
 
-
-
-
-
+        <br>
+        <br>
+        <br>
+        <label id="filename" for="comment">Link to file:</label>
+        <br>
+        <form role="form">
+          <input class="form-control" placeholder="Link/URL">
+          <a class="btn btn-primary btn-md" role="button" id="submit-file">Submit File</a>
+        </form>
+      </div><!-- /.row -->
     </div><!-- /.container -->
 
 
@@ -82,5 +85,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/upload.js"></script>
   </body>
 </html>

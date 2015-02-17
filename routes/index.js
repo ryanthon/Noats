@@ -1,6 +1,11 @@
 var express = require( 'express' );
 var router  = express.Router();
 
+var home      = require( './home' );
+var notes     = require( './notes' );
+var classes   = require( './classes' );
+var upload    = require( './upload' );
+
 var isAuthenticated = function( req, res, next ) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
@@ -38,6 +43,11 @@ module.exports = function( passport ) {
 		req.logout();
 		res.redirect( '/' );
 	});
+
+	router.use( '/home', home );
+	router.use( '/classes', classes );
+	router.use( '/notes', notes );
+	router.use( '/upload', upload );
 
 	return router;
 }

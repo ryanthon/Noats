@@ -9,7 +9,9 @@ var notes = new Schema({
 	},
 	"score"  : Number,
 	"url"    : String,
-	"topic"  : String
+	"topic"  : String,
+	"type"	 : String,
+	"text"	 : String
 });
 
 module.exports = mongoose.model( 'notes', notes );

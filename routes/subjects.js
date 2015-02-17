@@ -14,11 +14,11 @@ subjects.get( '/', function( req, res ) {
 });
 
 subjects.get( '/:subjectCode', function( req, res ) {
-	Classes.find( { 'code' : req.params.subjectCode}, function( err, classes ) {
+	Classes.find( { 'code' : req.params.subjectCode }, function( err, classes ) {
 		var data = {
 			'classes' : classes
 		}
-		console.log( data );
+		data['subject'] = req.params.subjectCode;
 		res.render( "classes", data );
 	});
 });

@@ -33,6 +33,12 @@ app.use( passport.session() );
 var passportConfig = require( './auth/passport' );
 passportConfig( passport );
 
+// load mongo models
+fs.readdirSync( __dirname + '/models' ).forEach( function( fileName ) {
+	require( __dirname + '/models/' + fileName );
+	console.log( 'loaded model ' + fileName );
+});
+
 // connect to mongo database
 var mongoLabURI  = 'mongodb://heroku_app33954783:liaue9a9gojmq61d82t6ko0n0m@ds045011.mongolab.com:45011/heroku_app33954783'
 var databaseURI = process.env.MONGOLAB_URI || mongoLabURI
@@ -45,24 +51,11 @@ mongoose.connect( databaseURI, function( err ) {
 	}
 });
 
-// load mongo models
-fs.readdirSync( __dirname + '/models' ).forEach( function( fileName ) {
-	require( __dirname + '/models/' + fileName );
-	console.log( 'loaded model ' + fileName );
-});
-
 // required routes
 var index     = require( './routes/index' )( passport );
-var home      = require( './routes/home' );
-var subjects  = require( './routes/subjects' );
-var notes     = require( './routes/notes' );
-var classes   = require( './routes/classes' );
 
 // register routes
 app.use( '/', index );
-app.use( '/home', home );
-app.use( '/classes', classes );
-app.use( '/notes', notes );
 
 // start server
 app.listen( app.get( 'port' ), function() {

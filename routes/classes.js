@@ -15,4 +15,23 @@ classes.get( '/:classID', function( req, res ) {
 	});
 });
 
+classes.post( '/add', function( req, res ) {
+	var user = req.user;
+	user.classes.push( req.body.classID );
+	user.save();
+	res.sendStatus( 200 );
+});
+
+classes.post( '/remove', function( req, res ) {
+	var user = req.user;
+	var classes = user.classes;
+	var classID = req.body.classID;
+	var index = classes.indexOf( classID )
+	if( index > -1 ) {
+		classes.splice( index, 1 );
+	}
+	user.save();
+	res.sendStatus( 200 );
+});
+
 module.exports = classes;

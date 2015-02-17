@@ -25,12 +25,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Noats</a>
+          <a class="navbar-brand" href="/">Noats Home</a>
+          <a class="navbar-brand" href="/classes/subjects">Classes</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/home">My Notes</a></li>
-            <li><a href="/classes/subjects">Classes</a></li>
             <li><a href="/logout">Logout</a></li>
           </ul>
         </div>
@@ -40,26 +39,32 @@
     <div class="container">
       <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9">
+          {{#if topics.length}}
           <p class="pull-right visible-xs">
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Topics</button>
           </p>
+          {{/if}}
           <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            {{#if topics.length}}
             <div class="list-group">
               <h2>Topics</h2>
               {{#each topics}}
                 <a href="#" class="list-group-item">{{this}}</a>
               {{/each}}
             </div>
+            {{/if}}
           </div>
           <div class="jumbotron">
             <h1>{{title}}</h1>
             <p>Click to view notes or upload notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </p>
             <br>
-            {{#unless isAdded}}
-              <a class="btn btn-md btn-primary" href="class_added.html" role="button">Add Class</a>
-            {{/unless}}
-            <a class="btn btn-md btn-primary" href="../UploadNotes.html" role="button">Upload Notes</a>
+            {{#if isAdded}}
+              <a class="btn btn-md btn-primary remove-class" role="button" id="{{_id}}">Remove Class</a>
+            {{else}}
+              <a class="btn btn-md btn-primary add-class" role="button" id="{{_id}}">Add Class</a>
+            {{/if}}
+            <a class="btn btn-md btn-primary" href="/upload" role="button">Upload Notes</a>
           </div>
           <div class="row">
             {{#each notes}}
@@ -81,11 +86,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../js/ie10-viewport-bug-workaround.js"></script>
-
-    <script src="../js/offcanvas.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/class.js"></script>
+    <script src="/js/offcanvas.js"></script>
   </body>
 </html>
