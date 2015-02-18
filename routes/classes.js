@@ -10,10 +10,27 @@ classes.use( '/subjects', subjects );
 classes.get( '/:classID', function( req, res ) {
 	var classID = req.params.classID;
 
-	Classes.findById( classID ).populate( 'notes' ).exec( function( err, classData ) {
+	var topic = req.query.topic;
+
+	var searchParams = {
+		path : 'notes'
+	}
+
+	if( topic ) {
+		searchParams['match'] = {
+			'topic' : topic
+		}
+	}
+
+	Classes.findById( classID ).populate( searchParams ).exec( function( err, classData ) {
 		User.populate( classData, { path : 'notes.uploader' }, function( err, classData ) {
 			var data = classData;
 			data['isAdded'] = req.user.classes.indexOf( classID ) > -1;
+
+			if( topic ) {
+				data['topic'] = topic;
+			}
+
 			res.render( 'class', data );
 		});
 	});

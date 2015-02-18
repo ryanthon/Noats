@@ -5,7 +5,8 @@ var Note = require( '../models/notes' );
 notes.get( '/:notesID', function( req, res ) {
 	var notesID = req.params.notesID;
 
-	Note.findById( notesID ).populate( 'uploader' ).exec( function( err, note ) {
+	Note.findById( notesID ).populate( 'uploader class' ).exec( function( err, note ) {
+		console.log( note );
 		res.render( 'noteviewer', note );
 	});
 });

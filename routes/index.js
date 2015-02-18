@@ -34,6 +34,10 @@ module.exports = function( passport ) {
 		failureRedirect : '/'
 	}));
 
+	router.get( '/register', function( req, res ) {
+		res.render( 'register' );
+	});
+
 	router.post( '/register', passport.authenticate( 'register', {
 		successRedirect: '/home',
 		failureRedirect: '/'

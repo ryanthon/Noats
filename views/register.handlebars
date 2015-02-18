@@ -26,16 +26,19 @@
     </nav>
 
     <div class="container">
-      <form class="form-signin" action="/login" method="post">
-        <h2 class="form-signin-heading">Welcome to Noats</h2>
-        <p class="lead">Collaborate with other students <br> Upload and download notes</p>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <form class="form-register" action="/register" method="post">
+        <h2 class="form-signin-heading">Noats Registration</h2>
+        <p class="lead">Collaborate with other students.<br>Upload and download notes.</p>
+        <input type="name" name="firstName" class="form-control" placeholder="First Name" required autofocus>
+        <input type="name" name="lastName" class="form-control" placeholder="Last Name" required autofocus>
         <br>
-        <p class="lead"><a href="" type="submit">Sign Up</button></p>
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <br>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="verifyPassword" class="form-control" placeholder="Verify Password" required>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <br>
       </form>
     </div>
 

@@ -7,6 +7,8 @@ var Note    = require( '../models/notes' );
 uploadNote = function( note, req, res ) {
 	var classID = req.body.classID;
 
+	note['class'] = classID;
+
 	note.save( function( err ) {
 		if( !err ) {
 			Classes.findById( classID, function( err, classData ) {

@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Noats Home</a>
+          <a class="navbar-brand" href="/">My Noats</a>
           <a class="navbar-brand" href="/classes/subjects">Classes</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
@@ -62,8 +62,8 @@
 
       <br>
       <br>
-
-      <div class="btn-group-vertical" role="group" aria-label="...">
+      <br>
+      <div>
         <h3>Document Title</h3>
         <input class="form-control" placeholder="Title" id="note-title">
       </div>
@@ -73,26 +73,27 @@
 
       <div>
         <h3>Submit Text or File</h3>
-        <div class="input-group">
-
-          <form role="form">
-            <div class="form-group">
-              <label for="comment">Type/Copy Notes:</label>
-              <textarea class="form-control" rows="6" id="note-text"></textarea>
-            </div>
-            <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-text">Submit Text</a>
-          </form>
+        <div id="text-form">
+          <label for="comment">Type/Copy Notes:</label>
+          <textarea class="form-control" rows="6" id="note-text"></textarea>
+          <br>
+          <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-text">Submit Text</a>
         </div>
 
         <br>
         <br>
         <br>
-        <label id="filename" for="comment">Link to file:</label>
-        <br>
-        <!-- <form role="form"> -->
+        <div id="file-form">
+          <label id="filename" for="comment">Link to file:</label>
+          <br>
           <input class="form-control" placeholder="Link/URL" id="note-file">
+          <br>
           <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-file">Submit File</a>
-        <!-- </form> -->
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
       </div><!-- /.row -->
     </div><!-- /.container -->
 

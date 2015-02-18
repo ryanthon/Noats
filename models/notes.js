@@ -7,6 +7,10 @@ var notes = new Schema({
 		type: Schema.ObjectId,
 		ref: "users"
 	},
+	"class"  : {
+		type: Schema.ObjectId,
+		ref: "classes"
+	},
 	"score"  : Number,
 	"url"    : String,
 	"topic"  : String,

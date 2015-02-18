@@ -12,9 +12,28 @@ function initializePage() {
 	selectedTopic = $('.topic-btn').first().attr( 'id' );
 
 	$('#note-topic').keyup( function() {
-		$('.topic-btn').removeClass( 'active' );
-		selectedTopic = $(this).val();
-		console.log( selectedTopic );
+		var text = $(this).val();
+
+		if( text.length == 0 ) {
+			$('.topic-btn').first().addClass( 'active' );
+			selectedTopic = $('.topic-btn').first().attr( 'id' );
+		}
+		else {
+			$('.topic-btn').removeClass( 'active' );
+			selectedTopic = $(this).val();
+		}
+	});
+
+	$('#note-text').keyup( function() {
+		$('#text-error').remove();
+	});
+
+	$('#note-title').keyup( function() {
+		$('#title-error').remove();
+	});
+
+	$('#note-file').keyup( function() {
+		$('#url-error').remove();
 	});
 
 	$('.topic-btn').click( function( e ) {
@@ -26,10 +45,28 @@ function initializePage() {
 	});
 
 	$('#submit-text').click( function( e ) {
+		var text = $('#note-text').val();
+		var title = $('#note-title').val();
+
+		if( title.length == 0 ) {
+			var errorMsg = $('#text-form').find( '#title-error' );
+			if( !errorMsg.length ) {
+				$('#text-form').append( '<span style="color:red" id="title-error">&nbspYour document needs a title!</span>' );
+			}
+			return;
+		}
+		else if( text.length == 0 ) {
+			var errorMsg = $('#text-form').find( '#text-error' );
+			if( !errorMsg.length ) {
+				$('#text-form').append( '<span style="color:red" id="text-error">&nbspThe text box is empty!</span>' );
+			}
+			return;
+		}
+
 		var data = {
-			"topic" : selectedTopic,
-			"text" : $('#note-text').val(),
-			"title" : $('#note-title').val(),
+			"topic"   : selectedTopic,
+			"text"    : text,
+			"title"   : title,
 			"classID" : classID
 		}
 
@@ -42,10 +79,28 @@ function initializePage() {
 	});
 
 	$('#submit-file').click( function( e ) {
+		var url = $('#note-file').val();
+		var title = $('#note-title').val();
+
+		if( title.length == 0 ) {
+			var errorMsg = $('#file-form').find( '#title-error' );
+			if( !errorMsg.length ) {
+				$('#file-form').append( '<span style="color:red" id="title-error">&nbspYour document needs a title!</span>' );
+			}
+			return;
+		}
+		else if( url.length == 0 ) {
+			var errorMsg = $('#file-form').find( '#url-error' );
+			if( !errorMsg.length ) {
+				$('#file-form').append( '<span style="color:red" id="url-error">&nbspYou must enter a link/URL!</span>' );
+			}
+			return;
+		}
+
 		var data = {
-			"topic" : selectedTopic,
-			"url" : $('#note-file').val(),
-			"title" : $('#note-title').val(),
+			"topic"   : selectedTopic,
+			"url"     : url,
+			"title"   : title,
 			"classID" : classID
 		}
 

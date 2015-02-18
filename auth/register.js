@@ -10,7 +10,7 @@ module.exports = function( passport ) {
         function( req, email, password, done ) {
             findOrCreateUser = function() {
                 User.findOne({ 
-                        'email' : email 
+                        'email' : email
                     }, 
                     function( err, user ) {
                         if( err ) {
@@ -23,13 +23,14 @@ module.exports = function( passport ) {
                             return done( null, false );
                         } 
                         else {
+                            console.log( req.body );
                             var newUser = new User();
 
-                            newUser.email     = email;
-                            console.log( req );
-                            newUser.password  = createHash( password );
-                            newUser.firstName = req.query.firstName;
-                            newUser.lastName  = req.query.lastName;
+                            newUser.email      = email;
+                            newUser.password   = createHash( password );
+                            newUser.firstName  = req.body.firstName;
+                            newUser.lastName   = req.body.lastName;
+                            newUser['classes'] = [];
 
                             newUser.save( function( err ) {
                                 if( err ) {

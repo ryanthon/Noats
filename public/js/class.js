@@ -1,5 +1,8 @@
 $(document).ready( function() {
 	initializePage();
+
+	var topic = $('.topic-label').attr( 'id' );
+	var matched = $("[id='" + topic + "']").addClass( 'active' );
 })
 
 function initializePage() {
@@ -15,7 +18,7 @@ function initializePage() {
 		$(this).removeClass( 'add-class' ).addClass( 'remove-class' );
 
 		$.post( '/classes/add', parameters );
-	})
+	});
 
 	$('body').on( 'click', '.remove-class', function() {
 		var classID = $(this).attr( 'id' );
@@ -29,5 +32,5 @@ function initializePage() {
 		$(this).removeClass( 'remove-class' ).addClass( 'add-class' );
 
 		$.post( '/classes/remove', parameters );
-	})
+	});
 }
