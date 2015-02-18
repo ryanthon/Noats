@@ -33,8 +33,6 @@ function initializePage() {
 			"classID" : classID
 		}
 
-		console.log( data );
-
 		var ladda = Ladda.create( this );
 	 	ladda.start();
 
@@ -42,4 +40,21 @@ function initializePage() {
 			window.location.replace( '/classes/' + classID );
 		});
 	});
+
+	$('#submit-file').click( function( e ) {
+		var data = {
+			"topic" : selectedTopic,
+			"url" : $('#note-file').val(),
+			"title" : $('#note-title').val(),
+			"classID" : classID
+		}
+
+		var ladda = Ladda.create( this );
+	 	ladda.start();
+
+		$.post( '/upload/file', data, function() {
+			window.location.replace( '/classes/' + classID );
+		});
+	});
+
 }
