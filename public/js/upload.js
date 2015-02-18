@@ -1,20 +1,45 @@
-var selectedClassID = '';
+var selectedTopic = '';
+var classID = '';
 
 $(document).ready( function() {
 	initializePage();
 })
 
 function initializePage() {
-	$('.class-btn').first().button( 'toggle' );
-	selectedClassID = $('.class-btn').first().attr( 'id' );
+	classID = $('.class-link').attr( 'id' );
 
-	$('.class-btn').click( function( e ) {
-		selectedClassID = e.target.id;
-		console.log( selectedClassID );
-	})
+	$('.topic-btn').first().addClass( 'active' );
+	selectedTopic = $('.topic-btn').first().attr( 'id' );
+
+	$('#note-topic').keyup( function() {
+		$('.topic-btn').removeClass( 'active' );
+		selectedTopic = $(this).val();
+		console.log( selectedTopic );
+	});
+
+	$('.topic-btn').click( function( e ) {
+		$('.topic-btn').removeClass( 'active' );
+		selectedTopic = e.target.id;
+		$("[id='" + selectedTopic + "']").addClass( 'active' );
+		$('#note-topic').val( '' );
+		console.log( selectedTopic );
+	});
 
 	$('#submit-text').click( function( e ) {
-		console.log( selectedClassID );
-		console.log( $('#note-text').val() );
-	})
+		var data = {
+			"topic" : selectedTopic,
+			"text" : $('#note-text').val(),
+			"title" : $('#note-title').val(),
+			"classID" : classID
+		}
+
+		console.log( data );
+
+		var ladda = Ladda.create( this );
+	 	ladda.start();
+
+		$.post( '/upload/text', data, function() {
+			window.location.replace( '/classes/' + classID );
+		});
+	});
 }

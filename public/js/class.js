@@ -3,26 +3,31 @@ $(document).ready( function() {
 })
 
 function initializePage() {
-	$('.add-class').click( function( e ) {
-		var classID = e.target.id;
+	$('body').on( 'click', '.add-class', function() {
+		var classID = $(this).attr( 'id' );
 		var parameters = {
 			"classID" : classID
 		}
 
-		$.post( '/classes/add', parameters, function() {
-			console.log( "DID POST" );
-			location.reload( true );
+		$(this).text( function() {
+			return 'Remove Class';
 		});
+		$(this).removeClass( 'add-class' ).addClass( 'remove-class' );
+
+		$.post( '/classes/add', parameters );
 	})
 
-	$('.remove-class').click( function( e ) {
-		var classID = e.target.id;
+	$('body').on( 'click', '.remove-class', function() {
+		var classID = $(this).attr( 'id' );
 		var parameters = {
 			"classID" : classID
 		}
 
-		$.post( '/classes/remove', parameters, function() {
-			location.reload( true );
+		$(this).text( function() {
+			return 'Add Class';
 		});
+		$(this).removeClass( 'remove-class' ).addClass( 'add-class' );
+
+		$.post( '/classes/remove', parameters );
 	})
 }

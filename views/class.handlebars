@@ -55,6 +55,7 @@
             {{/if}}
           </div>
           <div class="jumbotron">
+            <h4>{{code}} {{section}}</h4>
             <h1>{{title}}</h1>
             <p>Click to view notes or upload notes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </p>
@@ -64,14 +65,14 @@
             {{else}}
               <a class="btn btn-md btn-primary add-class" role="button" id="{{_id}}">Add Class</a>
             {{/if}}
-            <a class="btn btn-md btn-primary" href="/upload" role="button">Upload Notes</a>
+            <a class="btn btn-md btn-primary" href="/upload/{{_id}}" role="button">Upload Notes</a>
           </div>
           <div class="row">
             {{#each notes}}
             <div class="col-xs-6 col-lg-4">
-              <h2>{{name}}</h2>
-              <p>By {{uploader}}</p>
-              <p><a class="btn btn-default" href="../Notes_Example.html" role="button">View details &raquo;</a>
+              <h2>{{title}}</h2>
+              <p>By {{uploader.firstName}} {{uploader.lastName}}</p>
+              <p><a class="btn btn-default" href="/notes/{{id}}" role="button">View details &raquo;</a>
               </p>
             </div>
           {{/each}}

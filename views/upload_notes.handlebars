@@ -39,15 +39,33 @@
 
     <div class="container">
 
-      <div>
+      <div class="jumbotron">
+        <div class="container">
+          <h3><a href="/classes/{{_id}}" class="class-link" id="{{_id}}">{{code}} {{section}}</a></h3>
           <h1>Upload Notes</h1>
+        </div>
       </div>
 
       <div class="btn-group-vertical" role="group" aria-label="...">
-        <h3>Class</h3>
-        {{#each classes}}
-          <button type="button" class="btn btn-default class-btn" id="{{id}}" style="outline: 0">{{code}} {{section}}</button>
+        <h3>Topic</h3>
+        {{#each topics}}
+          <button type="button" class="btn btn-default topic-btn" id="{{this}}" style="outline: 0">{{this}}</button>
         {{/each}}
+        {{#if topics.length}}<br>{{/if}}
+        <label for="comment">
+          {{#if topics.length}}Or enter a new topic:
+          {{else}}Enter a new topic:
+          {{/if}}
+        </label>
+        <input class="form-control" placeholder="Topic" id="note-topic">
+      </div>
+
+      <br>
+      <br>
+
+      <div class="btn-group-vertical" role="group" aria-label="...">
+        <h3>Document Title</h3>
+        <input class="form-control" placeholder="Title" id="note-title">
       </div>
 
       <br>
@@ -62,7 +80,7 @@
               <label for="comment">Type/Copy Notes:</label>
               <textarea class="form-control" rows="6" id="note-text"></textarea>
             </div>
-            <a class="btn btn-primary btn-md" role="button" id="submit-text">Submit Text</a>
+            <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-text">Submit Text</a>
           </form>
         </div>
 
@@ -71,10 +89,10 @@
         <br>
         <label id="filename" for="comment">Link to file:</label>
         <br>
-        <form role="form">
+        <!-- <form role="form"> -->
           <input class="form-control" placeholder="Link/URL">
-          <a class="btn btn-primary btn-md" role="button" id="submit-file">Submit File</a>
-        </form>
+          <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-file">Submit File</a>
+        <!-- </form> -->
       </div><!-- /.row -->
     </div><!-- /.container -->
 
@@ -86,5 +104,10 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
     <script src="/js/upload.js"></script>
+
+    <!-- button loading spinner -->
+    <link rel="stylesheet" href="/css/ladda-themeless.min.css">
+    <script src="/js/spin.min.js"></script>
+    <script src="/js/ladda.min.js"></script>
   </body>
 </html>
