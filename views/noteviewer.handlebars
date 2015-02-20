@@ -48,14 +48,25 @@
           <a href="{{url}}">{{url}}</a>
         </div>
         {{/if}}
-        {{score}} people found these notes helpful.
 
-        
+        <div class="helpful-count" id="{{score}}">
+          {{score}} people found these notes helpful.
+        </div>
+
         {{#if isOwn}}
         <br>
         <br>
           <a class="btn btn-md btn-primary delete-note ladda-button" data-style="expand-right" role="button" id="{{_id}}">Delete Note</a>
         {{/if}}
+
+        {{#unless isOwn}}
+          <br>
+          {{#if markedHelpful}}
+            <a class="btn btn-xs btn-danger unhelpful" role="button" id="{{_id}}">Mark as Unhelpful</a>
+          {{else}}
+            <a class="btn btn-xs btn-success helpful" role="button" id="{{id}}">Mark as Helpful</a>
+          {{/if}}
+        {{/unless}}
       </div>
 
       {{#if text}}

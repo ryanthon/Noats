@@ -45,7 +45,8 @@ upload.post( '/text', function( req, res ) {
 		'score'    : 0,
 		'text'     : req.body.text,
 		'topic'    : req.body.topic,
-		'url'      : ''
+		'url'      : '',
+		'helpful'  : []
 	});
 
 	uploadNote( note, req, res );
@@ -59,7 +60,8 @@ upload.post( '/file', function( req, res ) {
 		'score'    : 0,
 		'text'     : '',
 		'topic'    : req.body.topic,
-		'url'      : req.body.url
+		'url'      : req.body.url,
+		'helpful'  : []
 	});
 
 	uploadNote( note, req, res );

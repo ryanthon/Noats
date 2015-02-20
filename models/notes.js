@@ -12,7 +12,7 @@ var notes = new Schema({
 		ref: "classes"
 	},
 	"score"  : Number,
-	"helpful": {},
+	"helpful": [String],
 	"url"    : String,
 	"topic"  : String,
 	"type"	 : String,
