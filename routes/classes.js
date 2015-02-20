@@ -26,7 +26,12 @@ classes.get( '/:classID', function( req, res ) {
 	Classes.findById( classID ).populate( searchParams ).exec( function( err, classData ) {
 		User.populate( classData, { path : 'notes.uploader' }, function( err, classData ) {
 			var data = classData;
-			data['isAdded'] = req.user.classes.indexOf( classID ) > -1;
+
+			var classes = req.user['classes'];
+
+			if( classes ) {
+				data['isAdded'] = classes.indexOf( classID ) > -1;
+			}
 
 			if( topic ) {
 				data['topic'] = topic;
