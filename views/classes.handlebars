@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Classes</title>
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/dashboard.css" rel="stylesheet">
@@ -16,6 +16,11 @@
   </head>
 
   <body>
+    <ol class="breadcrumb">
+      <li><a href="/classes/subjects">Subjects</a></li>
+      <li class="active">{{subject}} Classes</li>
+    </ol>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -36,6 +41,8 @@
       </div>
     </nav>
 
+    
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -52,7 +59,7 @@
               <tbody>
                 {{#each classes}}
                 <tr>
-                  <td><a class="btn btn-xs btn-primary" href="/classes/{{id}}" role="button">View</a></td>
+                  <td><a class="btn btn-xs btn-primary" href="/classes/{{id}}?breadcrumb=true" role="button">View</a></td>
                   <td>{{section}}</td>
                   <td>{{title}}</td>
                 </tr>

@@ -11,6 +11,7 @@ classes.get( '/:classID', function( req, res ) {
 	var classID = req.params.classID;
 
 	var topic = req.query.topic;
+	var breadcrumb = req.query.breadcrumb;
 
 	var searchParams = {
 		path : 'notes'
@@ -29,6 +30,10 @@ classes.get( '/:classID', function( req, res ) {
 
 			if( topic ) {
 				data['topic'] = topic;
+			}
+
+			if( breadcrumb ) {
+				data['breadcrumbs'] = true;
 			}
 
 			res.render( 'class', data );
