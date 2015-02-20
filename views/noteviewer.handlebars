@@ -41,7 +41,28 @@
         <h3><a href="/classes/{{class._id}}" class="class-link" id="{{class._id}}">{{class.code}} {{class.section}}</a></h3>
         <h1>{{title}}</h1>
         <p class="lead">By {{uploader.firstName}} {{uploader.lastName}}</p>
+        {{#if url}}
+        <div style="word-wrap: break-word">
+          <br>
+          <b>Link: </b>
+          <a href="{{url}}">{{url}}</a>
+        </div>
+        {{/if}}
+        {{score}} people found these notes helpful.
+
+        
+        {{#if isOwn}}
+        <br>
+        <br>
+          <a class="btn btn-md btn-primary delete-note ladda-button" data-style="expand-right" role="button" id="{{_id}}">Delete Note</a>
+        {{/if}}
       </div>
+
+      {{#if text}}
+      <div style="word-wrap: break-word">
+      <p>{{text}}</p>
+      </div>
+      {{/if}}
     </div><!-- /.container -->
 
 
@@ -51,5 +72,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <link rel="stylesheet" href="/css/ladda-themeless.min.css">
+    <script src="/js/spin.min.js"></script>
+    <script src="/js/ladda.min.js"></script>
+    <script src="/js/noteviewer.js"></script>
   </body>
 </html>
