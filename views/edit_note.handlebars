@@ -19,23 +19,22 @@
   <body>
     {{> nav-bar}}
 
-    <div class="container">
-
+    <div class="container outer-edit" id="{{_id}}">
       <div class="jumbotron">
         <div class="container">
-          <h3><a href="/classes/{{_id}}" class="class-link" id="{{_id}}">{{code}} {{section}}</a></h3>
-          <h1>Upload Notes</h1>
+          <h3><a href="/classes/{{_id}}" class="class-link" id="{{class._id}}">{{class.code}} {{class.section}}</a></h3>
+          <h1>Edit Note</h1>
         </div>
       </div>
 
       <div class="btn-group-vertical" role="group" aria-label="...">
-        <h3>Topic</h3>
-        {{#each topics}}
+        <h3 class="topic-title" id="{{topic}}">Topic</h3>
+        {{#each class.topics}}
           <button type="button" class="btn btn-default topic-btn" id="{{this}}" style="outline: 0">{{this}}</button>
         {{/each}}
-        {{#if topics.length}}<br>{{/if}}
+        {{#if class.topics.length}}<br>{{/if}}
         <label for="comment">
-          {{#if topics.length}}Or enter a new topic:
+          {{#if class.topics.length}}Or enter a new topic:
           {{else}}Enter a new topic:
           {{/if}}
         </label>
@@ -47,7 +46,7 @@
       <br>
       <div>
         <h3>Document Title</h3>
-        <input class="form-control" placeholder="Title" id="note-title">
+        <input class="form-control" value="{{title}}" placeholder="Title" id="note-title">
       </div>
 
       <br>
@@ -55,23 +54,29 @@
 
       <div>
         <h3>Submit Text or File</h3>
-        <div id="text-form">
-          <label for="comment">Type/Copy Notes:</label>
-          <textarea class="form-control" rows="6" id="note-text"></textarea>
-          <br>
-          <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-text">Submit Text</a>
-        </div>
+
+        {{#if text.length}}
+          <div id="text-form">
+            <label for="comment">Type/Copy Notes:</label>
+            <textarea class="form-control" rows="6" id="note-text">{{text}}</textarea>
+            <br>
+            <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-text">Update Text</a>
+          </div>
+        {{/if}}
 
         <br>
         <br>
         <br>
-        <div id="file-form">
-          <label id="filename" for="comment">Link to file:</label>
-          <br>
-          <input class="form-control" placeholder="Link/URL" id="note-file">
-          <br>
-          <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-file">Submit File</a>
-        </div>
+
+        {{#if url.length}}
+          <div id="file-form">
+            <label id="filename" for="comment">Link to file:</label>
+            <br>
+            <input value="{{url}}" class="form-control" placeholder="Link/URL" id="note-file">
+            <br>
+            <a class="btn btn-primary ladda-button" data-style="expand-right" id="submit-file">Submit File</a>
+          </div>
+        {{/if}}
         <br>
         <br>
         <br>
@@ -86,7 +91,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="/js/upload.js"></script>
+    <script src="/js/edit.js"></script>
 
     <!-- button loading spinner -->
     <link rel="stylesheet" href="/css/ladda-themeless.min.css">

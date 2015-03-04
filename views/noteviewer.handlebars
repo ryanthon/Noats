@@ -13,28 +13,11 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/starter-template.css" rel="stylesheet">
     <script src="/js/ie-emulation-modes-warning.js"></script>
+    {{> woopra}}
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">My Noats</a>
-          <a class="navbar-brand" href="/classes/subjects">Classes</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/logout">Logout</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    {{> nav-bar}}
 
     <div class="container">
       <div class="jumbotron">
@@ -54,25 +37,40 @@
         </div>
 
         {{#if isOwn}}
-        <br>
-        <br>
+          <br>
+          <br>
           <a class="btn btn-md btn-primary delete-note ladda-button" data-style="expand-right" role="button" id="{{_id}}">Delete Note</a>
+          <a href="/notes/edit/{{_id}}" class="btn btn-md btn-primary edit-note" role="button" id="{{_id}}">Edit Note</a>
         {{/if}}
 
         {{#unless isOwn}}
           <br>
           {{#if markedHelpful}}
-            <a class="btn btn-xs btn-danger unhelpful" role="button" id="{{_id}}">Mark as Unhelpful</a>
+            <a class="btn btn-xs btn-success helpful" role="button" id="{{_id}}">Marked as Helpful</a>
+            &nbsp;
+            <a class="btn btn-xs unhelpful" role="button" id="{{_id}}">Mark as Unhelpful</a>
           {{else}}
-            <a class="btn btn-xs btn-success helpful" role="button" id="{{id}}">Mark as Helpful</a>
+            {{#if markedUnhelpful}}
+              <a class="btn btn-xs helpful" role="button" id="{{_id}}">Mark as Helpful</a>
+              &nbsp;
+              <a class="btn btn-xs btn-danger unhelpful" role="button" id="{{_id}}">Marked as Unhelpful</a>
+            {{else}}
+              <a class="btn btn-xs helpful" role="button" id="{{_id}}">Mark as Helpful</a>
+              &nbsp;
+              <a class="btn btn-xs unhelpful" role="button" id="{{_id}}">Mark as Unhelpful</a>
+            {{/if}}
           {{/if}}
         {{/unless}}
       </div>
 
       {{#if text}}
-      <div style="word-wrap: break-word">
-      <p>{{text}}</p>
-      </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div style="word-wrap: break-word">
+              <p>{{text}}</p>
+            </div>
+          </div>
+        </div>
       {{/if}}
     </div><!-- /.container -->
 

@@ -4,7 +4,6 @@ $(document).ready( function() {
 	initializePage();
 
 	score = parseInt( $('.helpful-count').attr( 'id' ) );
-	console.log( score );
 })
 
 function initializePage() {
@@ -20,22 +19,17 @@ function initializePage() {
 		});
 	});
 
-	$('.edit-note').click( function( e ) {
-		woopra.track( 'edit_note' );
-	});
+	$('body').on( 'click', '.helpful', function( e ) {
+		e.preventDefault();
+	    e.stopImmediatePropagation();
 
-	$('body').on( 'click', '.helpful', function() {
 		var noteID = $(this).attr( 'id' );
 
 		var parameters = {
 			notesID : noteID
 		}
 
-		woopra.track( 'mark_helpful_b' );
-
-		if( $(this).hasClass( 'btn-success' ) ) {
-			return;
-		}
+		woopra.track( 'mark_helpful_a' );
 
 		score = score + 1;
 		$('.helpful-count').text( function() {
@@ -43,52 +37,43 @@ function initializePage() {
 		});
 
 		$(this).text( function() {
-			return 'Marked as Helpful';
-		});
-
-		$('.unhelpful').text( function() {
 			return 'Mark as Unhelpful';
 		});
-
-		$('.unhelpful').removeClass( 'btn-danger' );
-		$(this).addClass( 'btn-success' );
+		$(this).removeClass( 'helpful' ).addClass( 'unhelpful' );
+		$(this).removeClass( 'btn-success' ).addClass( 'btn-danger' );
 
 		$.post( '/notes/helpful', parameters );
 	});
 
-	$('body').on( 'click', '.unhelpful', function() {
+	$('body').on( 'click', '.unhelpful', function( e ) {
+		e.preventDefault();
+	    e.stopImmediatePropagation();
+
 		var noteID = $(this).attr( 'id' );
 
 		var parameters = {
 			notesID : noteID
 		}
 
-		woopra.track( 'mark_unhelpful_b' );
-
-		if( $(this).hasClass( 'btn-danger' ) ) {
+		if( $(this).hasClass( 'btn-success' ) ) {
 			return;
 		}
 
-		score = score - 1;
+		woopra.track( 'mark_unhelpful_a' );
 
+		score = score - 1;
 		if( score < 0 ) {
 			score = 0;
 		}
-
 		$('.helpful-count').text( function() {
 			return score + ' people found these notes helpful.';
 		});
 
 		$(this).text( function() {
-			return 'Marked as Unhelpful';
-		});
-
-		$('.helpful').text( function() {
 			return 'Mark as Helpful';
 		});
-
-		$('.helpful').removeClass( 'btn-success' );
-		$(this).addClass( 'btn-danger' );
+		$(this).removeClass( 'unhelpful' ).addClass( 'helpful' );
+		$(this).removeClass( 'btn-danger' ).addClass( 'btn-success' );
 
 		$.post( '/notes/unhelpful', parameters );
 	});

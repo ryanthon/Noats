@@ -25,6 +25,11 @@ classes.get( '/:classID', function( req, res ) {
 
 	Classes.findById( classID ).populate( searchParams ).exec( function( err, classData ) {
 		User.populate( classData, { path : 'notes.uploader' }, function( err, classData ) {
+			if( err ) {
+				res.redirect( '/' );
+				return;
+			}
+
 			var data = classData;
 
 			if( req.user ) {

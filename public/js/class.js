@@ -6,31 +6,35 @@ $(document).ready( function() {
 })
 
 function initializePage() {
-	$('body').on( 'click', '.add-class', function() {
+	$('body').on( 'click', '.add-class', function( e ) {
+		e.preventDefault();
+	    e.stopImmediatePropagation();
+
 		var classID = $(this).attr( 'id' );
 		var parameters = {
 			"classID" : classID
 		}
 
-		$(this).text( function() {
-			return 'Remove Class';
-		});
-		$(this).removeClass( 'add-class' ).addClass( 'remove-class' );
+		$(this).removeClass( 'add-class' );
 
-		$.post( '/classes/add', parameters );
+		$.post( '/classes/add', parameters, function( response ) {
+			window.location.replace( '/home' );
+		});
 	});
 
-	$('body').on( 'click', '.remove-class', function() {
+	$('body').on( 'click', '.remove-class', function( e ) {
+		e.preventDefault();
+    	e.stopImmediatePropagation();
+
 		var classID = $(this).attr( 'id' );
 		var parameters = {
 			"classID" : classID
 		}
 
-		$(this).text( function() {
-			return 'Add Class';
-		});
-		$(this).removeClass( 'remove-class' ).addClass( 'add-class' );
+		$(this).removeClass( 'remove-class' );
 
-		$.post( '/classes/remove', parameters );
+		$.post( '/classes/remove', parameters, function( response ) {
+			window.location.replace( '/home' );
+		});
 	});
 }

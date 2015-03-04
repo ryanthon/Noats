@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Notes</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/starter-template.css" rel="stylesheet">
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+    {{> woopra}}
+  </head>
+
+  <body>
+    {{> nav-bar}}
+
+    <div class="container">
+      <div class="jumbotron">
+        <h3><a href="/classes/{{class._id}}" class="class-link" id="{{class._id}}">{{class.code}} {{class.section}}</a></h3>
+        <h1>{{title}}</h1>
+        <p class="lead">By {{uploader.firstName}} {{uploader.lastName}}</p>
+        {{#if url}}
+        <div style="word-wrap: break-word">
+          <br>
+          <b>Link: </b>
+          <a href="{{url}}">{{url}}</a>
+        </div>
+        {{/if}}
+
+        <div class="helpful-count" id="{{score}}">
+          {{score}} people found these notes helpful.
+        </div>
+
+        {{#if isOwn}}
+        <br>
+        <br>
+          <a class="btn btn-md btn-primary delete-note ladda-button" data-style="expand-right" role="button" id="{{_id}}">Delete Note</a>
+        {{/if}}
+
+        {{#unless isOwn}}
+          <br>
+          {{#if markedHelpful}}
+            <a class="btn btn-xs btn-danger unhelpful" role="button" id="{{_id}}">Mark as Unhelpful</a>
+          {{else}}
+            <a class="btn btn-xs btn-success helpful" role="button" id="{{id}}">Mark as Helpful</a>
+          {{/if}}
+        {{/unless}}
+      </div>
+
+      {{#if text}}
+        <div style="word-wrap: break-word">
+          <p>{{text}}</p>
+        </div>
+      {{/if}}
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <link rel="stylesheet" href="/css/ladda-themeless.min.css">
+    <script src="/js/spin.min.js"></script>
+    <script src="/js/ladda.min.js"></script>
+    <script src="/js/noteviewer-a.js"></script>
+  </body>
+</html>

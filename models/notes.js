@@ -13,6 +13,7 @@ var notes = new Schema({
 	},
 	"score"  : Number,
 	"helpful": [String],
+	"unhelpful": [String],
 	"url"    : String,
 	"topic"  : String,
 	"type"	 : String,

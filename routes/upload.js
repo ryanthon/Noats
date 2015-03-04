@@ -37,6 +37,35 @@ upload.get( '/:classID', function( req, res ) {
 	});
 });
 
+upload.put( '/edit/:notesID', function( req, res ) {
+	var notesID = req.params.notesID;
+	var userID = req.user._id;
+
+	Note.findById( notesID ).populate( 'uploader class' ).exec( function( err, note ) {
+		console.log( 'BEFORE:\n' );
+		console.log( note );
+
+		note['title'] = req.body.title;
+		note['topic'] = req.body.topic;
+
+		if( note.type == 'text' ) {
+			note['text'] = req.body.text;
+		}
+		else if( note.type == 'file' ) {
+			note['url'] = req.body.url;
+		}
+
+		console.log( 'AFTER:\n' );
+		console.log( note );
+
+		note.save( function( err ) {
+
+		});
+
+		res.sendStatus( 200 );
+	});
+});
+
 upload.post( '/text', function( req, res ) {
 	var note = new Note({
 		'type'     : 'text',
