@@ -37,6 +37,9 @@ function initializePage() {
 	});
 
 	$('.topic-btn').click( function( e ) {
+		e.preventDefault();
+    	e.stopImmediatePropagation();
+    	
 		$('.topic-btn').removeClass( 'active' );
 		selectedTopic = e.target.id;
 		$("[id='" + selectedTopic + "']").addClass( 'active' );
@@ -45,6 +48,9 @@ function initializePage() {
 	});
 
 	$('#submit-text').click( function( e ) {
+		e.preventDefault();
+    	e.stopImmediatePropagation();
+
 		var text = $('#note-text').val();
 		var title = $('#note-title').val();
 
@@ -79,6 +85,9 @@ function initializePage() {
 	});
 
 	$('#submit-file').click( function( e ) {
+		e.preventDefault();
+    	e.stopImmediatePropagation();
+
 		var url = $('#note-file').val();
 		var title = $('#note-title').val();
 
