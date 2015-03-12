@@ -20,9 +20,6 @@ notes.get( '/:notesID', function( req, res ) {
 			note['isOwn'] = true;
 		}
 
-		var isNumber = !isNaN( parseInt( userID.slice( -1 ), 10 ) )
-		console.log( isNumber );
-
 		var markedHelpful = note.helpful.indexOf( userID );
 		var markedUnhelpful = note.unhelpful.indexOf( userID );
 
@@ -33,12 +30,7 @@ notes.get( '/:notesID', function( req, res ) {
 			note['markedUnhelpful'] = true;
 		}
 
-		if( isNumber ) {
-			res.render( 'noteviewer', note );
-		}
-		else {
-			res.render( 'noteviewer-a', note );
-		}
+		res.render( 'noteviewer', note );
 	});
 });
 
